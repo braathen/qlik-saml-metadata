@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual Proxy Configuration</title>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+</head>
+<body>
+
+<table cellspacing='0'>
+    <tr>
+        <th>Setting</th>
+        <th>Value</th>
+    </tr>
+    <tr class='even'>
+        <td>Entity ID <a href="" data-toggle="tooltip" title="The entityID attribute is the unique identifier of the identity provider. It is RECOMMENDED that a system entity use a URL containing its own domain name to identify itself. In example: https://sp.example.org/SAML2">[?]</a></td>
+        <td>#entityid#</td>
+    </tr>
+    <tr>
+        <td>ACS URL <a href="" data-toggle="tooltip" title="Also known as Assertion Consumer Service URL or sometimes more commonly as Single Sign On URL. In short this is the URL that the IdP should use for communicating with Qlik Sense.">[?]</a></td>
+        <td>#acs#</td>
+    </tr>
+    <tr class='even'>
+        <td>Name ID format</td>
+        <td>#nameidformat#</td>
+    </tr>
+    <tr>
+        <td>Certificate</td>
+        <td><textarea>#certificate#</textarea></td>
+    </tr>
+</table>
+
+</body>
+</html>

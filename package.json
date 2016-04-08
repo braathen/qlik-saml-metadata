@@ -1,0 +1,24 @@
+{
+  "name": "qlik-saml-metadata",
+  "version": "1.0.0",
+  "description": "Qlik Sense dynamic SAML metadata provider",
+  "main": "service.js",
+  "dependencies": {
+    "xml2js": "^0.4.16",
+    "qrs": "^2.0.2",
+    "express": "^4.13.4",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rikard Braathen",
+  "license": "MIT",
+  "keywords": [
+    "qlik",
+    "sense",
+    "saml",
+    "metadata"
+  ]
+}
