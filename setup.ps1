@@ -31,7 +31,7 @@ if(!(Test-Path -Path "$target\node_modules")) {
     # check if npm has been downloaded already
 	if(!(Test-Path -Path "$temp\$npm")) {
         New-Item -Path "$temp" -Type directory -force | Out-Null
-		Invoke-WebRequest "https://nodejs.org/dist/v4.4.2/$npm" -OutFile "$temp\$npm"
+        Invoke-WebRequest "https://nodejs.org/dist/v4.4.2/$npm" -OutFile "$temp\$npm"
 	}
 
     # check if module has been downloaded
@@ -49,16 +49,14 @@ if(!(Test-Path -Path "$target\node_modules")) {
     if(!(Test-Path -Path "setup\nodejs")) {
         Write-Host "Extracting files..."
         Start-Process -Wait msiexec.exe "/a $temp\$npm /qn TARGETDIR=$setup"
-        #Add-Type -assembly "system.io.compression.filesystem"
-        #[io.compression.zipfile]::ExtractToDirectory("$temp\npm.zip", "$temp\")
     }
 
     # install module with dependencies
-	Write-Host "Installing modules..."    
+    Write-Host "Installing modules..."
     Push-Location "$target\src"
     $env:Path=$env:Path + ";$config\Node"
-	&$setup\nodejs\npm.cmd config set spin=false
-	&$setup\nodejs\npm.cmd --prefix "$target" install
+    &$setup\nodejs\npm.cmd config set spin=false
+    &$setup\nodejs\npm.cmd --prefix "$target" install
     Pop-Location
 
     # cleanup temporary data
