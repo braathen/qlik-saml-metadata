@@ -70,6 +70,8 @@ if(!(Test-Path -Path "$target\node_modules")) {
 if (!(Select-String -path "$config\services.conf" -pattern "Identity=qlik-saml-metadata" -quiet)) {
 
 	$settings = @"
+
+
 [saml-metadata]
 Identity=qlik-saml-metadata
 Enabled=true
