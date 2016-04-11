@@ -28,10 +28,13 @@ if(!(Test-Path -Path "$target\node_modules")) {
       Break
     }
 
+    $wc = New-Object System.Net.WebClient
+
     # check if npm has been downloaded already
 	if(!(Test-Path -Path "$temp\$npm")) {
+        Write-Host "Downloading files..."
         New-Item -Path "$temp" -Type directory -force | Out-Null
-        Invoke-WebRequest "https://nodejs.org/dist/v4.4.2/$npm" -OutFile "$temp\$npm"
+        $wc.DownloadFile("http://nodejs.org/dist/v4.4.2/$npm", "$temp\$npm")
 	}
 
     # check if module has been downloaded
@@ -39,10 +42,10 @@ if(!(Test-Path -Path "$target\node_modules")) {
         New-Item -Path "$target\src" -Type directory | Out-Null
         New-Item -Path "$target\src\css" -Type directory | Out-Null
         New-Item -Path "$target\src\views" -Type directory | Out-Null
-        Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/css/stylesheet.css" -OutFile "$target\src\css\stylesheet.css"
-        Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/views/index.html" -OutFile "$target\src\views\index.html"
-        Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/service.js" -OutFile "$target\src\service.js"
-        Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/package.json" -OutFile "$target\package.json"
+        $wc.DownloadFile("http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/css/stylesheet.css", "$target\src\css\stylesheet.css")
+        $wc.DownloadFile("http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/views/index.html", "$target\src\views\index.html")
+        $wc.DownloadFile("http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/service.js", "$target\src\service.js")
+        $wc.DownloadFile("http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/package.json", "$target\package.json")
     }
 
     # check if npm has been unzipped already
@@ -55,7 +58,7 @@ if(!(Test-Path -Path "$target\node_modules")) {
     Write-Host "Installing modules..."
     Push-Location "$target\src"
     $env:Path=$env:Path + ";$config\Node"
-    &$setup\nodejs\npm.cmd config set spin=false
+    &$setup\nodejs\npm.cmd config set spin=true
     &$setup\nodejs\npm.cmd --prefix "$target" install
     Pop-Location
 
