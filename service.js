@@ -43,7 +43,7 @@ app.engine('html', function (filePath, options, callback) {
     });
 });
 
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
 var qrs = new QRS(config);

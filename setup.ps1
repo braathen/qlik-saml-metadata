@@ -39,7 +39,7 @@ if(!(Test-Path -Path "$target\node_modules")) {
         New-Item -Path "$target\src" -Type directory | Out-Null
         New-Item -Path "$target\src\css" -Type directory | Out-Null
         New-Item -Path "$target\src\views" -Type directory | Out-Null
-        Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/css/stylesheet.css" -OutFile "$target\src\css\service.js"
+        Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/css/stylesheet.css" -OutFile "$target\src\css\stylesheet.css"
         Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/views/index.html" -OutFile "$target\src\views\index.html"
         Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/service.js" -OutFile "$target\src\service.js"
         Invoke-WebRequest "http://raw.githubusercontent.com/braathen/qlik-saml-metadata/master/package.json" -OutFile "$target\package.json"
