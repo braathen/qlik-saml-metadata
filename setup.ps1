@@ -61,11 +61,11 @@ if(!(Test-Path -Path "$target\node_modules")) {
 
     # cleanup temporary data
     Write-Host $nl"Removing temporary files..."
-    #Remove-Item $temp -recurse
+    Remove-Item $temp -recurse
 }
 
 # check if config has been added already
-if (!(Select-String -path "$config\services.conf" -pattern "Identity=rfn-google-auth" -quiet)) {
+if (!(Select-String -path "$config\services.conf" -pattern "Identity=qlik-saml-metadata" -quiet)) {
 
 	$settings = @"
 [saml-metadata]
@@ -79,7 +79,7 @@ Script=Node\data-prep\src\service.js
 [saml-metadata.parameters]
 Port=3001
 "@
-	#Add-Content "$config\services.conf" $settings
+	Add-Content "$config\services.conf" $settings
 }
 
 Write-Host $nl"Done! Please restart the 'Qlik Sense Service Dispatcher' service for changes to take affect."$nl
