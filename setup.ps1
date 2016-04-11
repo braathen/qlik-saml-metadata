@@ -78,7 +78,7 @@ Enabled=true
 DisplayName=SAML Metadata
 ExecType=nodejs
 ExePath=Node\node.exe
-Script=Node\data-prep\src\service.js
+Script=Node\SAML-Metadata\src\service.js
 
 [saml-metadata.parameters]
 Port=3001
